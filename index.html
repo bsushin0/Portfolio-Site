@@ -81,7 +81,7 @@
       padding: 40px;
       border-radius: 8px;
     }
-    /* Timeline Styles */
+    /* Timeline Styles (Combined Projects, Experience & Education) */
     .timeline {
       position: relative;
       margin: 40px 0;
@@ -129,7 +129,21 @@
     .timeline-item:nth-child(even):before {
       left: -6px;
     }
-    /* AI Avatar (Eyes Follow Cursor) */
+    /* Passions Tiles (No Hover Effects) */
+    .passion-item {
+      transition: none;
+      cursor: default;
+    }
+    .passion-item:hover {
+      transform: none;
+      opacity: 1;
+    }
+    .passion-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: var(--accent-color);
+    }
+    /* AI Avatar: Increase z-index so it appears over content */
     .ai-avatar {
       position: fixed;
       bottom: 20px;
@@ -141,7 +155,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 3;
+      z-index: 100;
       border: 2px solid var(--accent3-color);
     }
     .ai-avatar .eye {
@@ -181,8 +195,7 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
             <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-            <li class="nav-item"><a class="nav-link" href="#timeline-projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#timeline-experience">Work Experience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#timeline">Timeline</a></li>
             <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
             <li class="nav-item"><a class="nav-link" href="#passions">Passions</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -209,7 +222,7 @@
             <p class="lead animate__animated animate__fadeInUp">
               CS Student | AI/ML Enthusiast | Tech &amp; Management Visionary
             </p>
-            <a href="#timeline-projects" class="btn btn-custom btn-lg animate__animated animate__fadeInUp">View My Work</a>
+            <a href="#timeline" class="btn btn-custom btn-lg animate__animated animate__fadeInUp">View My Journey</a>
           </div>
         </div>
       </div>
@@ -247,31 +260,30 @@
       </div>
     </section>
 
-    <!-- Projects Timeline Section -->
-    <section id="timeline-projects" class="py-5">
+    <!-- Unified Timeline Section -->
+    <section id="timeline" class="py-5">
       <div class="container" data-aos="fade-up">
-        <h2 class="section-title">Projects Timeline</h2>
+        <h2 class="section-title">My Journey</h2>
         <ul class="timeline">
-          <li class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalProject1">
-            <h5>Wine Varietals Forecast Model</h5>
-            <small>Aug 2024 – Dec 2024</small>
+          <!-- Timeline Item 1: Joined Purdue University -->
+          <li class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalPurdue">
+            <h5>Joined Purdue University</h5>
+            <small>Fall 2023</small>
           </li>
-          <li class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalProject2">
+          <!-- Timeline Item 2: Marketplace Project -->
+          <li class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalMarketplace">
             <h5>Marketplace Project</h5>
             <small>Aug 2023 – Dec 2023</small>
           </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Work Experience Timeline Section -->
-    <section id="timeline-experience" class="py-5 bg-dark">
-      <div class="container" data-aos="fade-up">
-        <h2 class="section-title">Work Experience Timeline</h2>
-        <ul class="timeline">
-          <li class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalExperience1">
+          <!-- Timeline Item 3: Summer Intern at PSEG -->
+          <li class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalPSEG">
             <h5>Summer Intern, PSEG</h5>
-            <small>June 2024 – Aug 2024</small>
+            <small>Jun 2024 – Aug 2024</small>
+          </li>
+          <!-- Timeline Item 4: Wine Varietals Forecast Model -->
+          <li class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalWine">
+            <h5>Wine Varietals Forecast Model</h5>
+            <small>Aug 2024 – Dec 2024</small>
           </li>
         </ul>
       </div>
@@ -290,48 +302,48 @@
       </div>
     </section>
 
-    <!-- Passions Section -->
+    <!-- Passions Section (Static Tiles) -->
     <section id="passions" class="py-5">
       <div class="container" data-aos="fade-up">
         <h2 class="section-title">Passions &amp; Interests</h2>
         <div class="row g-4">
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4">
+            <div class="card bg-secondary p-4 passion-item">
               <i class="fas fa-robot passion-icon"></i>
               <h5>AI &amp; Machine Learning</h5>
               <p>Exploring emerging technologies and building intelligent systems.</p>
             </div>
           </div>
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4">
+            <div class="card bg-secondary p-4 passion-item">
               <i class="fas fa-briefcase passion-icon"></i>
               <h5>Tech &amp; Management</h5>
               <p>Merging technical expertise with strategic vision for innovation.</p>
             </div>
           </div>
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4">
+            <div class="card bg-secondary p-4 passion-item">
               <i class="fas fa-plane passion-icon"></i>
               <h5>Aviation</h5>
               <p>An avid aviation enthusiast with dreams of flying high.</p>
             </div>
           </div>
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4">
+            <div class="card bg-secondary p-4 passion-item">
               <i class="fas fa-flag-checkered passion-icon"></i>
               <h5>F1 Racing</h5>
               <p>The thrill of speed and precision fuels my passion for F1.</p>
             </div>
           </div>
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4">
+            <div class="card bg-secondary p-4 passion-item">
               <i class="fas fa-football-ball passion-icon"></i>
               <h5>NFL Football</h5>
-              <p>Enjoying strategic gameplay and dynamic energy of the NFL.</p>
+              <p>Enjoying the strategic gameplay and dynamic energy of the NFL.</p>
             </div>
           </div>
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4">
+            <div class="card bg-secondary p-4 passion-item">
               <i class="fas fa-users passion-icon"></i>
               <h5>Networking &amp; Exploration</h5>
               <p>Connecting with like-minded individuals and exploring the outdoors.</p>
@@ -375,53 +387,69 @@
   </div>
 
   <!-- Timeline Modals -->
-  <!-- Project Modal 1: Wine Varietals Forecast Model -->
-  <div class="modal fade" id="modalProject1" tabindex="-1" aria-labelledby="modalProject1Label" aria-hidden="true">
+  <!-- Modal: Joined Purdue University -->
+  <div class="modal fade" id="modalPurdue" tabindex="-1" aria-labelledby="modalPurdueLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content bg-dark text-white">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalProject1Label">Wine Varietals Forecast Model Project</h5>
+          <h5 class="modal-title" id="modalPurdueLabel">Joined Purdue University</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <p>
-            Leveraged advanced Python libraries including TensorFlow and Keras to build LSTM and RNN models for time series forecasting and pattern recognition. Optimized performance through hyperparameter tuning and retraining. Led a team to debug and enhance legacy code, boosting overall efficiency.
+            I began my journey in Computer Science at Purdue University in Fall 2023, diving into courses like Computer Architecture, OOP in Java, and more, while building the foundation for my passion in AI and technology.
           </p>
         </div>
       </div>
     </div>
   </div>
-  <!-- Project Modal 2: Marketplace Project -->
-  <div class="modal fade" id="modalProject2" tabindex="-1" aria-labelledby="modalProject2Label" aria-hidden="true">
+  <!-- Modal: Marketplace Project -->
+  <div class="modal fade" id="modalMarketplace" tabindex="-1" aria-labelledby="modalMarketplaceLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content bg-dark text-white">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalProject2Label">Marketplace Project</h5>
+          <h5 class="modal-title" id="modalMarketplaceLabel">Marketplace Project</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <p>
-            Collaborated with a cross-functional team to design and implement a robust Java application for professional buying and selling. Engineered a user-centric platform with account management, transaction handling, and real-time statistical tracking using advanced technologies like JDialog, networking protocols, and concurrency management.
+            Collaborated with a cross-functional team to design and implement a robust Java application for professional buying and selling. The platform featured user account creation, secure transactions, and real-time statistical tracking.
           </p>
         </div>
       </div>
     </div>
   </div>
-  <!-- Experience Modal: Summer Intern, PSEG -->
-  <div class="modal fade" id="modalExperience1" tabindex="-1" aria-labelledby="modalExperience1Label" aria-hidden="true">
+  <!-- Modal: Summer Intern, PSEG -->
+  <div class="modal fade" id="modalPSEG" tabindex="-1" aria-labelledby="modalPSEGLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content bg-dark text-white">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalExperience1Label">Summer Intern, PSEG</h5>
+          <h5 class="modal-title" id="modalPSEGLabel">Summer Intern, PSEG</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <ul>
-            <li>Developed and tested 5 software solutions for various business needs and product viability testing.</li>
-            <li>Spearheaded a team of over 25 interns to create a comprehensive help site for onboarding.</li>
-            <li>Designed and implemented a project that streamlined an application process, reducing processing time drastically.</li>
-            <li>Gained insights into project management, Sprint frameworks, and scrum methodologies through active backlog management.</li>
+            <li>Developed and tested 5 software solutions for various business needs.</li>
+            <li>Spearheaded a team of 25+ interns to build a comprehensive help site for onboarding.</li>
+            <li>Streamlined an application process, reducing processing time from days to seconds.</li>
+            <li>Gained hands-on experience with project management and agile methodologies.</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal: Wine Varietals Forecast Model -->
+  <div class="modal fade" id="modalWine" tabindex="-1" aria-labelledby="modalWineLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalWineLabel">Wine Varietals Forecast Model Project</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Leveraged advanced Python libraries (TensorFlow and Keras) to build LSTM and RNN models for time series forecasting. Optimized performance through hyperparameter tuning and retraining while leading a team in debugging legacy code.
+          </p>
         </div>
       </div>
     </div>
@@ -463,7 +491,7 @@
       spacing: 10.00
     });
 
-    // AI Avatar Eye Movement: Make the pupils follow the cursor
+    // AI Avatar Eye Movement: Pupils follow the cursor
     document.addEventListener('mousemove', (e) => {
       document.querySelectorAll('.eye').forEach(eye => {
         const rect = eye.getBoundingClientRect();
