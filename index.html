@@ -11,8 +11,18 @@
   <!-- AOS (Animate on Scroll) CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
-    body {
+    /* Interactive Particles Background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
       background-color: #121212;
+    }
+    body {
+      background-color: transparent;
       color: #ffffff;
     }
     .navbar, .footer {
@@ -53,129 +63,141 @@
       transform: scale(1.05);
       opacity: 0.9;
     }
+    /* Ensure main content layers above the particles background */
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Sushin Bandha</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- Interactive Particles Background -->
+  <div id="particles-js"></div>
 
-  <!-- Hero Section -->
-  <header class="vh-100 d-flex align-items-center" id="home" style="padding-top: 60px;">
-    <div class="container text-center">
-      <h1 class="display-4 animate__animated animate__fadeInDown">Hi, I'm Sushin Bandha</h1>
-      <p class="lead animate__animated animate__fadeInUp">
-        CS Student | AI/ML Enthusiast | IT/OT &amp; Product Management Aspirant
-      </p>
-      <a href="#portfolio" class="btn btn-custom btn-lg animate__animated animate__fadeInUp">View My Work</a>
-    </div>
-  </header>
-
-  <!-- About Section -->
-  <section id="about" class="py-5">
-    <div class="container" data-aos="fade-up">
-      <h2 class="section-title">About Me</h2>
-      <p>
-        Hello! I'm Sushin Bandha, a passionate Computer Science student with a deep interest in Artificial Intelligence and Machine Learning. I am actively seeking internships and co-op opportunities in AI fields, IT/OT management, and Product/Project management.
-      </p>
-    </div>
-  </section>
-
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="py-5 bg-dark">
-    <div class="container" data-aos="fade-up">
-      <h2 class="section-title">Portfolio</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card bg-secondary portfolio-item">
-            <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Project 1" />
-            <div class="card-body">
-              <h5 class="card-title">Project One</h5>
-              <p class="card-text">A brief description of your project goes here.</p>
-              <a href="#" class="btn btn-custom">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card bg-secondary portfolio-item">
-            <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Project 2" />
-            <div class="card-body">
-              <h5 class="card-title">Project Two</h5>
-              <p class="card-text">A brief description of your project goes here.</p>
-              <a href="#" class="btn btn-custom">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card bg-secondary portfolio-item">
-            <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Project 3" />
-            <div class="card-body">
-              <h5 class="card-title">Project Three</h5>
-              <p class="card-text">A brief description of your project goes here.</p>
-              <a href="#" class="btn btn-custom">Learn More</a>
-            </div>
-          </div>
+  <div class="content-wrapper">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Sushin Bandha</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Experience Section -->
-  <section id="experience" class="py-5">
-    <div class="container" data-aos="fade-up">
-      <h2 class="section-title">Experience</h2>
-      <p>
-        Here you can detail your work experience, projects, and internships. Describe your role, skills gained, and technologies used in each project.
-      </p>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <header class="vh-100 d-flex align-items-center" id="home" style="padding-top: 60px;">
+      <div class="container text-center">
+        <h1 class="display-4 animate__animated animate__fadeInDown">Hi, I'm Sushin Bandha</h1>
+        <p class="lead animate__animated animate__fadeInUp">
+          CS Student | AI/ML Enthusiast | IT/OT &amp; Product Management Aspirant
+        </p>
+        <a href="#portfolio" class="btn btn-custom btn-lg animate__animated animate__fadeInUp">View My Work</a>
+      </div>
+    </header>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-5 bg-dark">
-    <div class="container" data-aos="fade-up">
-      <h2 class="section-title">Get In Touch</h2>
-      <p>
-        If you'd like to work together or have any questions, feel free to reach out!
-      </p>
-      <form>
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Your Name" />
+    <!-- About Section -->
+    <section id="about" class="py-5">
+      <div class="container" data-aos="fade-up">
+        <h2 class="section-title">About Me</h2>
+        <p>
+          Hello! I'm Sushin Bandha, a passionate Computer Science student with a deep interest in Artificial Intelligence and Machine Learning. I am actively seeking internships and co-op opportunities in AI fields, IT/OT management, and Product/Project management.
+        </p>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5 bg-dark">
+      <div class="container" data-aos="fade-up">
+        <h2 class="section-title">Portfolio</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card bg-secondary portfolio-item">
+              <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Project 1" />
+              <div class="card-body">
+                <h5 class="card-title">Project One</h5>
+                <p class="card-text">A brief description of your project goes here.</p>
+                <a href="#" class="btn btn-custom">Learn More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-secondary portfolio-item">
+              <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Project 2" />
+              <div class="card-body">
+                <h5 class="card-title">Project Two</h5>
+                <p class="card-text">A brief description of your project goes here.</p>
+                <a href="#" class="btn btn-custom">Learn More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-secondary portfolio-item">
+              <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Project 3" />
+              <div class="card-body">
+                <h5 class="card-title">Project Three</h5>
+                <p class="card-text">A brief description of your project goes here.</p>
+                <a href="#" class="btn btn-custom">Learn More</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="name@example.com" />
-        </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Message</label>
-          <textarea class="form-control" id="message" rows="3" placeholder="Your message here..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-custom">Send Message</button>
-      </form>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer py-4">
-    <div class="container text-center">
-      <p class="mb-0">&copy; 2025 Sushin Bandha. All rights reserved.</p>
-    </div>
-  </footer>
+    <!-- Experience Section -->
+    <section id="experience" class="py-5">
+      <div class="container" data-aos="fade-up">
+        <h2 class="section-title">Experience</h2>
+        <p>
+          Here you can detail your work experience, projects, and internships. Describe your role, skills gained, and technologies used in each project.
+        </p>
+      </div>
+    </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-dark">
+      <div class="container" data-aos="fade-up">
+        <h2 class="section-title">Get In Touch</h2>
+        <p>
+          If you'd like to work together or have any questions, feel free to reach out!
+        </p>
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Your Name" />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="3" placeholder="Your message here..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-custom">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+      <div class="container text-center">
+        <p class="mb-0">&copy; 2025 Sushin Bandha. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Particles.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js/2.0.0/particles.min.js"></script>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- AOS JS -->
@@ -184,6 +206,111 @@
     AOS.init({
       duration: 1000,
       once: true
+    });
+    // Initialize Particles.js
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 400,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
     });
   </script>
 </body>
