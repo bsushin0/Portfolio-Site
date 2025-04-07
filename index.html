@@ -15,37 +15,37 @@
         integrity="sha512-xh6O/C7bX3Y4F5rN0E/6+zWZ5z3SmjO9H+zb7Kw0K9oOYv0xqQ70H7s1i3rC6uEd1Xz9xDdTNE3tv2kQKV8K5Q==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    /* Vanta.js Background Container */
-    #vanta-bg {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
+    :root {
+      --primary-bg: #121212;
+      --secondary-bg: #1f1f1f;
+      --accent-color: #C88900; /* Purdue Old Gold */
+      --accent2-color: #C8102E; /* Red Bull Racing Red */
+      --accent3-color: #1E41FF; /* Red Bull Racing Blue */
+      --text-color: #ffffff;
     }
-    /* Main Body and Content */
+    /* Global Styles */
     body {
-      background-color: transparent;
-      color: #ffffff;
+      background-color: var(--primary-bg);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
     }
     .content-wrapper {
       position: relative;
       z-index: 1;
     }
     .navbar, .footer {
-      background-color: #1f1f1f;
+      background-color: var(--secondary-bg);
     }
     .btn-custom {
-      background-color: #007bff;
-      border-color: #007bff;
-      color: #fff;
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      color: var(--text-color);
       transition: all 0.3s ease;
     }
     .btn-custom:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-      color: #fff;
+      background-color: var(--accent2-color);
+      border-color: var(--accent2-color);
+      color: var(--text-color);
     }
     /* Section Titles */
     .section-title {
@@ -53,36 +53,122 @@
       margin-bottom: 20px;
       position: relative;
       display: inline-block;
+      padding-bottom: 5px;
+      border-bottom: 3px solid var(--accent2-color);
     }
-    .section-title::after {
-      content: "";
-      width: 50%;
-      height: 3px;
-      background: #007bff;
+    /* Hero Section */
+    #home {
+      padding-top: 80px;
+    }
+    .hero-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .hero-profile {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: var(--secondary-bg);
+      background-image: url('https://via.placeholder.com/150');
+      background-size: cover;
+      background-position: center;
+      border: 4px solid var(--accent-color);
+    }
+    /* Highlighted About Section */
+    #about {
+      background: rgba(200, 136, 0, 0.15);
+      padding: 40px;
+      border-radius: 8px;
+    }
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      margin: 40px 0;
+      padding: 0;
+      list-style: none;
+    }
+    .timeline:before {
+      content: '';
       position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: var(--accent2-color);
+    }
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px 40px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .timeline-item:nth-child(odd) {
       left: 0;
-      bottom: -10px;
+      text-align: right;
     }
-    /* Card Hover Effects */
-    .portfolio-item, .passion-item {
-      transition: transform 0.3s ease, opacity 0.3s ease;
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
     }
-    .portfolio-item:hover, .passion-item:hover {
-      transform: scale(1.05);
-      opacity: 0.9;
+    .timeline-item:before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 12px;
+      height: 12px;
+      background: var(--accent-color);
+      border: 3px solid var(--text-color);
+      border-radius: 50%;
+      z-index: 1;
     }
-    /* Passions Icons Styling */
-    .passion-icon {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      color: #007bff;
+    .timeline-item:nth-child(odd):before {
+      right: -6px;
+    }
+    .timeline-item:nth-child(even):before {
+      left: -6px;
+    }
+    /* AI Avatar (Eyes Follow Cursor) */
+    .ai-avatar {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      background: var(--secondary-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      border: 2px solid var(--accent3-color);
+    }
+    .ai-avatar .eye {
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      position: relative;
+      margin: 0 4px;
+      overflow: hidden;
+    }
+    .ai-avatar .pupil {
+      width: 10px;
+      height: 10px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      transition: top 0.1s, left 0.1s;
     }
   </style>
 </head>
 <body>
-  <!-- AI-Inspired Interactive Background -->
+  <!-- Dynamic Background (Vanta.NET) -->
   <div id="vanta-bg"></div>
-  
+
   <div class="content-wrapper">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -95,176 +181,172 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
             <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-            <li class="nav-item"><a class="nav-link" href="#portfolio">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#experience">Work Experience</a></li>
-            <li class="nav-item"><a class="nav-link" href="#skills">Skills &amp; Certifications</a></li>
+            <li class="nav-item"><a class="nav-link" href="#timeline-projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#timeline-experience">Work Experience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
             <li class="nav-item"><a class="nav-link" href="#passions">Passions</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           </ul>
         </div>
       </div>
     </nav>
-    
+
     <!-- Hero Section -->
-    <header class="vh-100 d-flex align-items-center" id="home" style="padding-top: 60px;">
-      <div class="container text-center">
-        <h1 class="display-4 animate__animated animate__fadeInDown">Hi, I'm Sushin Bandha</h1>
-        <p class="lead animate__animated animate__fadeInUp">
-          CS Student | AI/ML Enthusiast | Tech &amp; Management Visionary
-        </p>
-        <a href="#portfolio" class="btn btn-custom btn-lg animate__animated animate__fadeInUp">View My Work</a>
+    <header class="vh-100 d-flex align-items-center" id="home">
+      <div class="container">
+        <div class="row hero-info align-items-center">
+          <div class="col-md-4 text-center">
+            <!-- Profile Picture Placeholder -->
+            <div class="hero-profile"></div>
+            <!-- Quick Links / Info -->
+            <div class="mt-3">
+              <a href="https://linkedin.com" target="_blank" class="btn btn-custom btn-sm me-2">LinkedIn</a>
+              <a href="mailto:bsushin1@gmail.com" class="btn btn-custom btn-sm">Email</a>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <h1 class="display-4 animate__animated animate__fadeInDown">Hi, I'm Sushin Bandha</h1>
+            <p class="lead animate__animated animate__fadeInUp">
+              CS Student | AI/ML Enthusiast | Tech &amp; Management Visionary
+            </p>
+            <a href="#timeline-projects" class="btn btn-custom btn-lg animate__animated animate__fadeInUp">View My Work</a>
+          </div>
+        </div>
       </div>
     </header>
-    
+
     <!-- About Section -->
     <section id="about" class="py-5">
       <div class="container" data-aos="fade-up">
         <h2 class="section-title">About Me</h2>
         <p>
-          🚀 Hello, I'm Sushin Bandha! I'm currently pursuing my Computer Science degree at Purdue University and am deeply passionate about Artificial Intelligence and Machine Learning. My ambition is to design, innovate, and manage AI-driven systems that make a meaningful impact on the world.
+          🚀 Hello, I'm Sushin Bandha! I'm pursuing my Computer Science degree at Purdue University and am deeply passionate about Artificial Intelligence and Machine Learning. My goal is to design, innovate, and manage AI-driven systems that make a meaningful impact.
         </p>
         <p>
-          I’m actively seeking opportunities in IT &amp; Tech Management, AI/ML roles, and internships/co-ops. Always open to learning and trying something new, I believe every opportunity is a chance to grow.
+          Actively seeking opportunities in IT &amp; Tech Management, AI/ML roles, and internships/co-ops, I'm always eager to learn and grow.
         </p>
       </div>
     </section>
-    
+
     <!-- Education Section -->
     <section id="education" class="py-5 bg-dark">
       <div class="container" data-aos="fade-up">
         <h2 class="section-title">Education</h2>
-        <p><strong>Bachelor of Science in Computer Science</strong><br>
-           Purdue University at West Lafayette, IN<br>
-           Expected May 2027 | GPA: 2.8
+        <p>
+          <strong>Bachelor of Science in Computer Science</strong><br>
+          Purdue University, West Lafayette, IN<br>
+          Expected May 2027 | GPA: 2.8
         </p>
-        <p><strong>Relevant Coursework:</strong> Computer Architecture, OOP in Java, Programming in C, Statistics &amp; Data Engineering in Python</p>
-        <p><strong>Software Skills:</strong> Microsoft Power Platform, Microsoft D365, GitHub, RStudio, Jupyter Labs, IntelliJ IDEA, VS Code</p>
-        <p><strong>Coding Skills:</strong> C, Java, Python, R, Git, Assembly</p>
+        <p>
+          <strong>Relevant Coursework:</strong> Computer Architecture, OOP in Java, Programming in C, Statistics &amp; Data Engineering in Python
+        </p>
+        <p>
+          <strong>Software Skills:</strong> Microsoft Power Platform, Microsoft D365, GitHub, RStudio, Jupyter Labs, IntelliJ IDEA, VS Code<br>
+          <strong>Coding Skills:</strong> C, Java, Python, R, Git, Assembly
+        </p>
       </div>
     </section>
-    
-    <!-- Projects Section -->
-    <section id="portfolio" class="py-5">
+
+    <!-- Projects Timeline Section -->
+    <section id="timeline-projects" class="py-5">
       <div class="container" data-aos="fade-up">
-        <h2 class="section-title">Projects</h2>
-        <div class="row g-4">
-          <!-- Wine Varietals Forecast Model Project -->
-          <div class="col-md-6">
-            <div class="card bg-secondary portfolio-item">
-              <div class="card-body">
-                <h5 class="card-title">Wine Varietals Forecast Model Project</h5>
-                <p class="card-text">
-                  Leveraged advanced Python libraries including TensorFlow and Keras to develop LSTM and RNN models for time series forecasting and pattern recognition. Optimized performance through hyperparameter tuning and collaborative debugging.
-                </p>
-                <a href="#" class="btn btn-custom">Learn More</a>
-              </div>
-            </div>
-          </div>
-          <!-- Marketplace Project -->
-          <div class="col-md-6">
-            <div class="card bg-secondary portfolio-item">
-              <div class="card-body">
-                <h5 class="card-title">Marketplace Project</h5>
-                <p class="card-text">
-                  Collaborated with a cross-functional team to design and implement a robust Java application for professional buying and selling. Utilized JDialog, networking protocols, I/O handling, and concurrency management to optimize performance.
-                </p>
-                <a href="#" class="btn btn-custom">Learn More</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h2 class="section-title">Projects Timeline</h2>
+        <ul class="timeline">
+          <li class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalProject1">
+            <h5>Wine Varietals Forecast Model</h5>
+            <small>Aug 2024 – Dec 2024</small>
+          </li>
+          <li class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalProject2">
+            <h5>Marketplace Project</h5>
+            <small>Aug 2023 – Dec 2023</small>
+          </li>
+        </ul>
       </div>
     </section>
-    
-    <!-- Work Experience Section -->
-    <section id="experience" class="py-5 bg-dark">
+
+    <!-- Work Experience Timeline Section -->
+    <section id="timeline-experience" class="py-5 bg-dark">
       <div class="container" data-aos="fade-up">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="mb-4">
-          <h5>Summer Intern, PSEG</h5>
-          <p><em>Newark, NJ | June 2024 - August 2024</em></p>
-          <ul>
-            <li>Developed and tested 5 software solutions for diverse business needs and product viability testing.</li>
-            <li>Spearheaded a project team of over 25 interns to create a comprehensive help site, enhancing onboarding and resource accessibility.</li>
-            <li>Designed and implemented a project to streamline an application process, reducing processing time from days to seconds.</li>
-            <li>Gained practical insights into project management, Sprint frameworks, and scrum methodologies, managing tasks and backlogs effectively.</li>
-          </ul>
-        </div>
+        <h2 class="section-title">Work Experience Timeline</h2>
+        <ul class="timeline">
+          <li class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalExperience1">
+            <h5>Summer Intern, PSEG</h5>
+            <small>June 2024 – Aug 2024</small>
+          </li>
+        </ul>
       </div>
     </section>
-    
+
     <!-- Skills & Certifications Section -->
     <section id="skills" class="py-5">
       <div class="container" data-aos="fade-up">
         <h2 class="section-title">Skills &amp; Certifications</h2>
-        <p><strong>Transferrable Skills:</strong> Project Development/Management, Communication, Adaptability, Critical Thinking, Leadership, Teamwork</p>
-        <p><strong>Certifications:</strong> CPR/AED Certified (AHA - Exp. June 2025), Data Classification and Handling Educational Resources (Purdue)</p>
+        <p>
+          <strong>Transferrable Skills:</strong> Project Management, Communication, Adaptability, Critical Thinking, Leadership, Teamwork
+        </p>
+        <p>
+          <strong>Certifications:</strong> CPR/AED Certified (AHA – Exp. June 2025), Data Classification and Handling (Purdue)
+        </p>
       </div>
     </section>
-    
+
     <!-- Passions Section -->
     <section id="passions" class="py-5">
       <div class="container" data-aos="fade-up">
         <h2 class="section-title">Passions &amp; Interests</h2>
         <div class="row g-4">
-          <!-- AI & ML -->
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4 passion-item">
+            <div class="card bg-secondary p-4">
               <i class="fas fa-robot passion-icon"></i>
               <h5>AI &amp; Machine Learning</h5>
-              <p>Exploring emerging technologies and developing intelligent systems that drive innovation.</p>
+              <p>Exploring emerging technologies and building intelligent systems.</p>
             </div>
           </div>
-          <!-- Tech & Management -->
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4 passion-item">
+            <div class="card bg-secondary p-4">
               <i class="fas fa-briefcase passion-icon"></i>
               <h5>Tech &amp; Management</h5>
-              <p>Merging technical expertise with strategic vision to foster innovation and efficiency.</p>
+              <p>Merging technical expertise with strategic vision for innovation.</p>
             </div>
           </div>
-          <!-- Aviation -->
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4 passion-item">
+            <div class="card bg-secondary p-4">
               <i class="fas fa-plane passion-icon"></i>
               <h5>Aviation</h5>
-              <p>An avid aviation enthusiast with dreams of soaring through the skies.</p>
+              <p>An avid aviation enthusiast with dreams of flying high.</p>
             </div>
           </div>
-          <!-- Formula 1 Racing -->
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4 passion-item">
+            <div class="card bg-secondary p-4">
               <i class="fas fa-flag-checkered passion-icon"></i>
               <h5>F1 Racing</h5>
-              <p>The thrill of speed and precision fuels my passion for Formula 1 racing.</p>
+              <p>The thrill of speed and precision fuels my passion for F1.</p>
             </div>
           </div>
-          <!-- NFL Football -->
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4 passion-item">
+            <div class="card bg-secondary p-4">
               <i class="fas fa-football-ball passion-icon"></i>
               <h5>NFL Football</h5>
-              <p>Enjoying the strategic gameplay and dynamic energy of the NFL.</p>
+              <p>Enjoying strategic gameplay and dynamic energy of the NFL.</p>
             </div>
           </div>
-          <!-- Networking & Exploration -->
           <div class="col-md-4 text-center">
-            <div class="card bg-secondary p-4 passion-item">
+            <div class="card bg-secondary p-4">
               <i class="fas fa-users passion-icon"></i>
               <h5>Networking &amp; Exploration</h5>
-              <p>Connecting with like-minded individuals and exploring the great outdoors.</p>
+              <p>Connecting with like-minded individuals and exploring the outdoors.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
+
     <!-- Contact Section -->
     <section id="contact" class="py-5">
       <div class="container" data-aos="fade-up">
         <h2 class="section-title">Get In Touch</h2>
         <p>
-          Whether it's a professional opportunity, a cool project, or a chat about aviation or F1, feel free to reach out!
+          Whether it’s a professional opportunity, a cool project, or a chat about aviation or F1—feel free to reach out!
         </p>
         <form>
           <div class="mb-3">
@@ -283,7 +365,7 @@
         </form>
       </div>
     </section>
-    
+
     <!-- Footer -->
     <footer class="footer py-4">
       <div class="container text-center">
@@ -291,8 +373,68 @@
       </div>
     </footer>
   </div>
-  
-  <!-- Dependencies for Vanta.js -->
+
+  <!-- Timeline Modals -->
+  <!-- Project Modal 1: Wine Varietals Forecast Model -->
+  <div class="modal fade" id="modalProject1" tabindex="-1" aria-labelledby="modalProject1Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalProject1Label">Wine Varietals Forecast Model Project</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Leveraged advanced Python libraries including TensorFlow and Keras to build LSTM and RNN models for time series forecasting and pattern recognition. Optimized performance through hyperparameter tuning and retraining. Led a team to debug and enhance legacy code, boosting overall efficiency.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Project Modal 2: Marketplace Project -->
+  <div class="modal fade" id="modalProject2" tabindex="-1" aria-labelledby="modalProject2Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalProject2Label">Marketplace Project</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Collaborated with a cross-functional team to design and implement a robust Java application for professional buying and selling. Engineered a user-centric platform with account management, transaction handling, and real-time statistical tracking using advanced technologies like JDialog, networking protocols, and concurrency management.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Experience Modal: Summer Intern, PSEG -->
+  <div class="modal fade" id="modalExperience1" tabindex="-1" aria-labelledby="modalExperience1Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalExperience1Label">Summer Intern, PSEG</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Developed and tested 5 software solutions for various business needs and product viability testing.</li>
+            <li>Spearheaded a team of over 25 interns to create a comprehensive help site for onboarding.</li>
+            <li>Designed and implemented a project that streamlined an application process, reducing processing time drastically.</li>
+            <li>Gained insights into project management, Sprint frameworks, and scrum methodologies through active backlog management.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Avatar (Eyes Follow Cursor) -->
+  <div class="ai-avatar">
+    <div class="eye"><div class="pupil"></div></div>
+    <div class="eye"><div class="pupil"></div></div>
+  </div>
+
+  <!-- Dependencies & Scripts -->
+  <!-- Three.js and Vanta.js for dynamic background -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
   <!-- Bootstrap JS -->
@@ -304,7 +446,7 @@
       duration: 1000,
       once: true
     });
-    // Initialize Vanta.js (AI-Inspired Network Effect)
+    // Initialize Vanta.js with enhanced movement
     VANTA.NET({
       el: "#vanta-bg",
       mouseControls: true,
@@ -312,13 +454,31 @@
       gyroControls: false,
       minHeight: 200.00,
       minWidth: 200.00,
-      scale: 1.00,
+      scale: 1.10,
       scaleMobile: 1.00,
-      color: 0x007bff,
+      color: 0xC88900,
       backgroundColor: 0x121212,
-      points: 12.00,
-      maxDistance: 25.00,
-      spacing: 15.00
+      points: 16.00,
+      maxDistance: 30.00,
+      spacing: 10.00
+    });
+
+    // AI Avatar Eye Movement: Make the pupils follow the cursor
+    document.addEventListener('mousemove', (e) => {
+      document.querySelectorAll('.eye').forEach(eye => {
+        const rect = eye.getBoundingClientRect();
+        const eyeCenterX = rect.left + rect.width / 2;
+        const eyeCenterY = rect.top + rect.height / 2;
+        const deltaX = e.clientX - eyeCenterX;
+        const deltaY = e.clientY - eyeCenterY;
+        const angle = Math.atan2(deltaY, deltaX);
+        const distance = 5; // maximum pupil movement
+        const pupilX = 5 + distance * Math.cos(angle);
+        const pupilY = 5 + distance * Math.sin(angle);
+        const pupil = eye.querySelector('.pupil');
+        pupil.style.left = pupilX + 'px';
+        pupil.style.top = pupilY + 'px';
+      });
     });
   </script>
 </body>
